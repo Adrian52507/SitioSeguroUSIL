@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Sitio Más Seguro del Mundo</title>
-    <link rel="stylesheet" href="styles2.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .fade-out {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,14 +25,59 @@
         <button type="submit">Enviar</button>
     </form>
 </div>
-
 <script>
+    // Configura los datos del BIN de JSONBin.io
+    const BIN_ID = "6727e435acd3cb34a8a204eb"; // Reemplaza con el ID de tu BIN
+    const API_KEY = "$2a$10$IwUHG0ehxZnV7RqWdegRxuydsIOBF2ERSytjnnlaisWe76I0NJjve"; // Reemplaza con tu API Key de JSONBin
+
     document.getElementById("dataForm").addEventListener("submit", function(event) {
         event.preventDefault();
-        document.body.classList.add("fade-out");
-        setTimeout(function() {
-            window.location.href = "index.html";
-        }, 500);
+
+        // Obtiene los valores del formulario
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+
+        // Crea el objeto de datos
+        const data = {
+            name: name,
+            email: email
+        };
+
+        // Primero, obtenemos los datos existentes del BIN
+        fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+            method: "GET", // Usamos GET para obtener los datos existentes
+            headers: {
+                "X-Master-Key": API_KEY
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error al obtener datos: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(existingData => {
+            // Añadimos el nuevo usuario a la lista existente
+            const updatedUsers = existingData.record.users || []; // Asegúrate de que existe el campo 'users'
+            updatedUsers.push(data); // Agregamos el nuevo dato
+
+            // Luego, enviamos los datos actualizados al BIN
+            return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+                method: "PUT", // Usamos PUT para actualizar el BIN con los nuevos datos
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Master-Key": API_KEY
+                },
+                body: JSON.stringify({ users: updatedUsers }) // Enviamos la lista actualizada
+            });
+        })
+        .then(response => response.json())
+        .then(json => {
+            console.log("Datos guardados en JSONBin:", json);
+            document.body.classList.add("fade-out");
+            setTimeout(() => window.location.href = "index.html", 500);
+        })
+        .catch(error => console.error("Error al enviar datos a JSONBin:", error));
     });
 </script>
 
