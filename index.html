@@ -3,58 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Datos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            transition: opacity 0.5s ease; /* Efecto de transición para el desvanecimiento */
-        }
-        input[type="text"], input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        .fade-out {
-            opacity: 0; /* Cambia la opacidad a 0 para el efecto de desvanecimiento */
-        }
-    </style>
+    <title>El Sitio Más Seguro del Mundo</title>
+    <link rel="stylesheet" href="styles2.css">
 </head>
 <body>
 
-<h2>Ingrese sus Datos</h2>
-<form id="dataForm">
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name" required>
-    
-    <label for="email">Correo Electrónico:</label>
-    <input type="email" id="email" name="email" required>
-    
-    <button type="submit">Enviar</button>
-</form>
+<div class="form-container">
+    <h2>Ingrese sus Datos &#128512;</h2>
+    <form id="dataForm">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <button type="submit">Enviar</button>
+    </form>
+</div>
 
 <script>
-    // Captura el evento de envío del formulario
     document.getElementById("dataForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Previene el comportamiento por defecto del formulario
-        document.body.classList.add("fade-out"); // Agrega la clase de desvanecimiento
-
-        // Espera 500ms (el mismo tiempo que la duración del desvanecimiento) antes de redirigir
+        event.preventDefault();
+        document.body.classList.add("fade-out");
         setTimeout(function() {
-            window.location.href = "mensaje.html"; // Redirige a index.html
+            window.location.href = "index.html";
         }, 500);
     });
 </script>
