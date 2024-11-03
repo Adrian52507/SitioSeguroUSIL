@@ -21,13 +21,14 @@ h2 {
     margin-bottom: 20px;
 }
 label, input[type="text"], input[type="email"] {
-    width: 100%;
+    width: 90%;
     margin: 20px 0;
 }
 input[type="text"], input[type="email"] {
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 4px;
     height: 30px;
+    padding: 4px;
 }
 button {
     padding: 10px 15px;
@@ -41,9 +42,7 @@ button {
 button:hover {
     background-color: #218838;
 }
-.fade-out {
-    opacity: 0;
-}
+
 @keyframes ascensor {
     0% {
         transform: translate(0,0) /* Posición inicial */
