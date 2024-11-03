@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #daa45e, #fd4c4c);
+    color: white;
+}
+.form-container {
+    background-color: rgba(4, 4, 4, 0.6); /* Fondo semitransparente */
+    padding: 20px 30px 40px 30px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra suave */
+    animation: ascensor 1.5s infinite;
+}
+h2 {
+    margin-bottom: 20px;
+}
+label, input[type="text"], input[type="email"] {
+    width: 100%;
+    margin: 20px 0;
+}
+input[type="text"], input[type="email"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 30px;
+}
+button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 80%;
+}
+button:hover {
+    background-color: #218838;
+}
+.fade-out {
+    opacity: 0;
+}
+@keyframes ascensor {
+    0% {
+        transform: translate(0,0) /* Posición inicial */
+    }
+    25% {
+        transform: translate(0, -3px); /* Moverse un poco hacia arriba */
+    }
+    50% {
+        transform: translate(0, 3px); /* Moverse un poco hacia abajo */
+    }
+    75% {
+        transform: translate(0, -3px); /* Moverse un poco hacia arriba */
+    }
+    100% {
+        transform: translate(0, 0); /* Moverse un poco hacia posición inicial */
+    }
+}
