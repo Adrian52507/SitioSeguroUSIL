@@ -5,7 +5,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, #daa45e, #fd4c4c);
+    background: linear-gradient(to right, #665cc2, #1e1aa5);
     color: white;
 }
 .form-container {
